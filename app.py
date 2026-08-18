@@ -391,8 +391,8 @@ def generate_correlation_matrix(n=20):
 def compute_rolling_stats(series, window=30):
     s = pd.Series(series)
     return {
-        "rolling_mean": s.rolling(window).mean().fillna(method="bfill"),
-        "rolling_std": s.rolling(window).std().fillna(method="bfill"),
+        "rolling_mean": s.rolling(window).mean().bfill(),
+        "rolling_std": s.rolling(window).std().bfill(),
         "rolling_sharpe": (s.rolling(window).mean() / s.rolling(window).std() * np.sqrt(252)).fillna(0),
         "rolling_skew": s.rolling(window).skew().fillna(0),
     }
@@ -488,7 +488,7 @@ st.markdown('<div class="divider-glow"></div>', unsafe_allow_html=True)
 c1, c2, c3, c4, c5, c6 = st.columns(6)
 btc_row = universe.iloc[0]
 with c1:
-    st.metric("Universe Size", "150 Coins", "↑ 2yr window")
+    st.metric("Universe Size", f"{len(universe)} Coins", "↑ 2yr window")
 with c2:
     st.metric("Total Candles", "78,462", "100% coverage")
 with c3:
@@ -556,7 +556,7 @@ with tab1:
             margin=dict(l=60, r=10, t=10, b=10),
         )
         fig_price.update_xaxes(showgrid=False, gridcolor="#0f1f38")
-        st.plotly_chart(fig_price, use_container_width=True)
+        st.plotly_chart(fig_price, width="stretch")
 
     with col_b:
         st.markdown('<div class="section-header">🏆 Top 10 by Volume</div>', unsafe_allow_html=True)
@@ -566,7 +566,7 @@ with tab1:
         top10["sharpe"] = top10["sharpe"].map("{:.3f}".format)
         top10["skewness"] = top10["skewness"].map("{:.3f}".format)
         top10.columns = ["Asset","Volume","σ Daily","Sharpe","Skew"]
-        st.dataframe(top10, hide_index=True, use_container_width=True,
+        st.dataframe(top10, hide_index=True, width="stretch",
                      column_config={
                          "Sharpe": st.column_config.ProgressColumn("Sharpe", min_value=-2, max_value=3, format="%.3f"),
                      })
@@ -586,7 +586,7 @@ with tab1:
             height=280, margin=dict(l=40, r=20, t=10, b=40),
             coloraxis_colorbar=dict(thickness=8, len=0.7),
         )
-        st.plotly_chart(fig_scatter, use_container_width=True)
+        st.plotly_chart(fig_scatter, width="stretch")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 2 — STATISTICAL STATES
@@ -610,7 +610,7 @@ with tab2:
             plot_bgcolor="rgba(6,13,24,0.8)", height=300,
             margin=dict(l=40, r=20, t=40, b=40), showlegend=False,
             xaxis_title="Daily σ (%)", yaxis_title="Density")
-        st.plotly_chart(fig_vol, use_container_width=True)
+        st.plotly_chart(fig_vol, width="stretch")
 
     with col_s2:
         # Skewness distribution
@@ -625,7 +625,7 @@ with tab2:
             plot_bgcolor="rgba(6,13,24,0.8)", height=300,
             margin=dict(l=40, r=20, t=40, b=40), showlegend=False,
             xaxis_title="Skewness", yaxis_title="Density")
-        st.plotly_chart(fig_skew, use_container_width=True)
+        st.plotly_chart(fig_skew, width="stretch")
 
     col_s3, col_s4 = st.columns(2)
     with col_s3:
@@ -639,7 +639,7 @@ with tab2:
             plot_bgcolor="rgba(6,13,24,0.8)", height=300,
             margin=dict(l=40, r=20, t=40, b=80), showlegend=False,
             xaxis_tickangle=-45)
-        st.plotly_chart(fig_sh, use_container_width=True)
+        st.plotly_chart(fig_sh, width="stretch")
 
     with col_s4:
         # Rolling statistics for BTC
@@ -658,7 +658,7 @@ with tab2:
             yaxis=dict(title="σ (%)", color="#00d4ff"),
             yaxis2=dict(title="Sharpe", overlaying="y", side="right", color="#ffd700"),
             legend=dict(x=0, y=1))
-        st.plotly_chart(fig_roll, use_container_width=True)
+        st.plotly_chart(fig_roll, width="stretch")
 
     # Full stats table
     st.markdown('<div class="section-header">📋 Full Statistical Eigenstate Table</div>', unsafe_allow_html=True)
@@ -669,7 +669,7 @@ with tab2:
         display_df[c] = display_df[c].map("{:.4f}".format)
     for c in ["Skewness","Kurtosis","Sharpe","IQR","Hurst H","Beta β"]:
         display_df[c] = display_df[c].map("{:.3f}".format)
-    st.dataframe(display_df, height=400, hide_index=True, use_container_width=True)
+    st.dataframe(display_df, height=400, hide_index=True, width="stretch")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 3 — CORRELATION FIELD
@@ -688,7 +688,7 @@ with tab3:
             margin=dict(l=10, r=10, t=50, b=10),
             coloraxis_colorbar=dict(title="ρ", thickness=12)
         )
-        st.plotly_chart(fig_corr, use_container_width=True)
+        st.plotly_chart(fig_corr, width="stretch")
     with col_c2:
         # Dendrogram-style cluster bars
         st.markdown("**Cluster Membership**", unsafe_allow_html=False)
@@ -727,7 +727,7 @@ with tab3:
             plot_bgcolor="rgba(6,13,24,0.8)", height=200,
             margin=dict(l=30, r=10, t=40, b=30),
             xaxis_title="ρ", showlegend=False)
-        st.plotly_chart(fig_ch, use_container_width=True)
+        st.plotly_chart(fig_ch, width="stretch")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 4 — DISTRIBUTION LAB
@@ -756,7 +756,7 @@ with tab4:
             plot_bgcolor="rgba(6,13,24,0.8)", height=360,
             margin=dict(l=40, r=20, t=50, b=40),
             legend=dict(x=0.6, y=0.95))
-        st.plotly_chart(fig_dist, use_container_width=True)
+        st.plotly_chart(fig_dist, width="stretch")
 
     with col_d2:
         # QQ Plot
@@ -773,7 +773,7 @@ with tab4:
             margin=dict(l=40, r=20, t=50, b=40),
             xaxis_title="Theoretical Quantiles", yaxis_title="Sample Quantiles",
             legend=dict(x=0.6, y=0.05))
-        st.plotly_chart(fig_qq, use_container_width=True)
+        st.plotly_chart(fig_qq, width="stretch")
 
     # Statistical Tests Panel
     st.markdown('<div class="section-header">🧮 Hypothesis Test Suite · BTC Returns</div>', unsafe_allow_html=True)
@@ -820,7 +820,7 @@ with tab4:
             plot_bgcolor="rgba(6,13,24,0.8)", height=280,
             margin=dict(l=40, r=20, t=50, b=40), showlegend=False,
             xaxis_title="Lag", yaxis_title="Autocorrelation")
-        st.plotly_chart(fig_acf, use_container_width=True)
+        st.plotly_chart(fig_acf, width="stretch")
     with col_acf2:
         r_sq = r ** 2
         acf_sq = [np.corrcoef(r_sq[:-k], r_sq[k:])[0, 1] for k in range(1, lags_n + 1)]
@@ -834,7 +834,7 @@ with tab4:
             plot_bgcolor="rgba(6,13,24,0.8)", height=280,
             margin=dict(l=40, r=20, t=50, b=40), showlegend=False,
             xaxis_title="Lag", yaxis_title="Autocorrelation")
-        st.plotly_chart(fig_acf2, use_container_width=True)
+        st.plotly_chart(fig_acf2, width="stretch")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 5 — QUANTUM SIGNALS
@@ -865,7 +865,7 @@ with tab5:
                 plot_bgcolor="rgba(6,13,24,0.8)", height=320,
                 margin=dict(l=40, r=20, t=50, b=40),
                 legend=dict(x=0.6, y=0.95))
-            st.plotly_chart(fig_wave, use_container_width=True)
+            st.plotly_chart(fig_wave, width="stretch")
 
     with col_q2:
         # Hurst exponent surface
@@ -897,7 +897,7 @@ with tab5:
                 plot_bgcolor="rgba(6,13,24,0.8)", height=320,
                 margin=dict(l=40, r=20, t=50, b=40),
                 xaxis_title="log(lag)", yaxis_title="log(R/S)")
-            st.plotly_chart(fig_hurst, use_container_width=True)
+            st.plotly_chart(fig_hurst, width="stretch")
 
     col_q3, col_q4 = st.columns(2)
     with col_q3:
@@ -920,7 +920,7 @@ with tab5:
                 plot_bgcolor="rgba(6,13,24,0.8)", height=280,
                 margin=dict(l=40, r=20, t=50, b=40), showlegend=False,
                 yaxis_title="Entropy H(X)")
-            st.plotly_chart(fig_ent, use_container_width=True)
+            st.plotly_chart(fig_ent, width="stretch")
 
     with col_q4:
         # Regime detection
@@ -936,7 +936,7 @@ with tab5:
                 plot_bgcolor="rgba(6,13,24,0.8)", height=280,
                 margin=dict(l=40, r=20, t=50, b=40), showlegend=False,
                 yaxis_title="Rolling σ")
-            st.plotly_chart(fig_reg, use_container_width=True)
+            st.plotly_chart(fig_reg, width="stretch")
 
     # 3D Return Space
     st.markdown('<div class="section-header">🌐 3D Return State Space · Phase Portrait</div>', unsafe_allow_html=True)
@@ -958,7 +958,7 @@ with tab5:
         ),
         height=500, margin=dict(l=0, r=0, t=50, b=0)
     )
-    st.plotly_chart(fig_3d, use_container_width=True)
+    st.plotly_chart(fig_3d, width="stretch")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 6 — ARCHITECTURE
@@ -1223,4 +1223,3 @@ with tab7:
       </div>
     </div>
     """, unsafe_allow_html=True)
-
