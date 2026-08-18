@@ -11,7 +11,7 @@ import random
 
 # ─── PAGE CONFIG ────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="QuantumMD · Market Dynamics",
+    page_title="Quantum CryptoRegime: Factor-Based Market Regime Classification · Market Dynamics",
     page_icon="⚛",
     layout="wide",
     initial_sidebar_state="expanded",
