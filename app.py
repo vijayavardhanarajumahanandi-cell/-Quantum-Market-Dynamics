@@ -777,7 +777,7 @@ with tab4:
 
     # Statistical Tests Panel
     st.markdown('<div class="section-header">🧮 Hypothesis Test Suite · BTC Returns</div>', unsafe_allow_html=True)
-    ks_stat, ks_p = stats.kstest(r, "norm", args=(mu, sigma))
+    ks_stat, ks_p = stats.kstest(r, lambda x: stats.norm.cdf(x, loc=mu, scale=sigma))
     sw_stat, sw_p = stats.shapiro(r[:500])
     jb_stat, jb_p = stats.jarque_bera(r)
     skew = stats.skew(r)
