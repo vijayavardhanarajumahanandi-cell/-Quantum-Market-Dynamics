@@ -11,7 +11,7 @@ import random
 
 # ─── PAGE CONFIG ────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Quantum CryptoRegime: Factor-Based Market Regime Classification · Market Dynamics",
+    page_title="QuantumMD · Market Dynamics",
     page_icon="⚛",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -23,18 +23,19 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@400;700;900&display=swap');
 
 :root {
-    --void: #020408;
-    --deep: #060d18;
-    --surface: #0a1628;
-    --panel: #0f1f38;
-    --border: #1a3055;
-    --quantum-blue: #00d4ff;
-    --quantum-violet: #7c3aed;
-    --plasma-green: #00ff88;
-    --solar-gold: #ffd700;
-    --nova-pink: #ff3d9a;
-    --neutron-white: #e8f4ff;
-    --muted: #4a6fa5;
+
+    --void: #02040A;
+    --deep: #070B16;
+    --surface: #0C1224;
+    --panel: #111A33;
+    --border: #24345C;
+    --quantum-blue: #00D4FF;
+    --quantum-violet: #7C3AED;
+    --plasma-green: #00FF88;
+    --solar-gold: #FFD166;
+    --nova-pink: #FF3D9A;
+    --neutron-white: #F1F7FF;
+    --muted: #6686B8;
 }
 
 html, body, [class*="css"] {
@@ -47,7 +48,7 @@ html, body, [class*="css"] {
 
 /* Sidebar */
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #060d18 0%, #020408 100%) !important;
+    background: linear-gradient(180deg, #070B16 0%, #02040A 100%) !important;
     border-right: 1px solid var(--border) !important;
 }
 [data-testid="stSidebar"] * { color: var(--neutron-white) !important; }
@@ -161,7 +162,7 @@ html, body, [class*="css"] {
     font-family: 'Orbitron', monospace;
     font-size: 2.8rem;
     font-weight: 900;
-    background: linear-gradient(135deg, var(--quantum-blue) 0%, var(--quantum-violet) 50%, var(--nova-pink) 100%);
+    background: linear-gradient(135deg, var(--quantum-blue) 0%, var(--quantum-violet) 52%, var(--nova-pink) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -191,7 +192,7 @@ html, body, [class*="css"] {
 }
 
 .arch-node {
-    background: linear-gradient(135deg, #0f1f38, #1a3055);
+    background: linear-gradient(135deg, #111A33, #24345C);
     border: 1px solid var(--quantum-blue);
     border-radius: 10px;
     padding: 0.8rem 1.2rem;
@@ -407,25 +408,25 @@ with st.sidebar:
     st.markdown("""
     <div style='text-align:center; padding: 1rem 0;'>
       <div style='font-family:Orbitron,monospace; font-size:1.2rem; font-weight:900;
-                  background:linear-gradient(135deg,#00d4ff,#7c3aed);
+                  background:linear-gradient(135deg,#00D4FF,#7C3AED);
                   -webkit-background-clip:text; -webkit-text-fill-color:transparent;'>
         ⚛ QUANTUM MD
       </div>
-      <div style='font-size:0.65rem; color:#4a6fa5; letter-spacing:0.2em; margin-top:0.2rem;'>
+      <div style='font-size:0.65rem; color:#6686B8; letter-spacing:0.2em; margin-top:0.2rem;'>
         MARKET DYNAMICS v2.0
       </div>
     </div>
     """, unsafe_allow_html=True)
     st.markdown('<div class="divider-glow"></div>', unsafe_allow_html=True)
 
-    st.markdown('<div style="font-size:0.7rem; color:#4a6fa5; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.5rem;">⚙ Parameters</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:0.7rem; color:#6686B8; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.5rem;">⚙ Parameters</div>', unsafe_allow_html=True)
     lookback = st.slider("Lookback Window (days)", 30, 730, 365)
     vol_threshold = st.slider("Volatility Threshold (%)", 1, 50, 10)
     selected_coin = st.selectbox("Primary Asset", ["BTC","ETH","SOL","XRP","BNB","ADA","AVAX","DOT"])
     corr_window = st.slider("Correlation Window", 7, 90, 30)
 
     st.markdown('<div class="divider-glow"></div>', unsafe_allow_html=True)
-    st.markdown('<div style="font-size:0.7rem; color:#4a6fa5; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.5rem;">🔬 Quantum Filters</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:0.7rem; color:#6686B8; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.5rem;">🔬 Quantum Filters</div>', unsafe_allow_html=True)
     enable_regime = st.checkbox("Regime Detection", True)
     enable_entropy = st.checkbox("Entropy Analysis", True)
     enable_fractal = st.checkbox("Fractal Dimension", True)
@@ -439,10 +440,10 @@ with st.sidebar:
     st.markdown("""
     <div style='margin-top:1rem; padding:0.8rem; background:rgba(0,212,255,0.05);
                 border:1px solid rgba(0,212,255,0.15); border-radius:8px;'>
-      <div style='font-size:0.65rem; color:#4a6fa5; margin-bottom:0.4rem;'>DATA SOURCE</div>
-      <div style='font-size:0.75rem; color:#e8f4ff;'>Binance Vision Archive</div>
-      <div style='font-size:0.65rem; color:#4a6fa5;'>150 USDT pairs · 730 days</div>
-      <div style='font-size:0.65rem; color:#4a6fa5;'>78,462 OHLCV candles</div>
+      <div style='font-size:0.65rem; color:#6686B8; margin-bottom:0.4rem;'>DATA SOURCE</div>
+      <div style='font-size:0.75rem; color:#F1F7FF;'>Binance Vision Archive</div>
+      <div style='font-size:0.65rem; color:#6686B8;'>150 USDT pairs · 730 days</div>
+      <div style='font-size:0.65rem; color:#6686B8;'>78,462 OHLCV candles</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -473,10 +474,10 @@ with col_h2:
     st.markdown("""
     <div style='display:flex; flex-direction:column; gap:0.5rem; align-items:flex-end; padding-top:1rem;'>
       <div class='live-badge'><div class='live-dot'></div> SIMULATION ACTIVE</div>
-      <div style='font-family:JetBrains Mono,monospace; font-size:0.7rem; color:#4a6fa5;'>
+      <div style='font-family:JetBrains Mono,monospace; font-size:0.7rem; color:#6686B8;'>
         QUANTUM EXPO 2026 · SRMIST
       </div>
-      <div style='font-family:JetBrains Mono,monospace; font-size:0.65rem; color:#4a6fa5;'>
+      <div style='font-family:JetBrains Mono,monospace; font-size:0.65rem; color:#6686B8;'>
         Vijay M. · CSE · RA2411003011492
       </div>
     </div>
@@ -527,7 +528,7 @@ with tab1:
         fig_price.add_trace(go.Scatter(
             x=price_df["date"], y=price_df["close"],
             fill="tozeroy", fillcolor="rgba(0,212,255,0.06)",
-            line=dict(color="#00d4ff", width=1.5),
+            line=dict(color="#00D4FF", width=1.5),
             name="BTC Close"
         ), row=1, col=1)
         # Bollinger bands
@@ -540,7 +541,7 @@ with tab1:
             fill="tonexty", fillcolor="rgba(124,58,237,0.05)",
             line=dict(color="rgba(124,58,237,0.5)", width=1, dash="dot"), name="BB Lower"), row=1, col=1)
         # Daily returns
-        colors = ["#00ff88" if r > 0 else "#ff3d9a" for r in price_df["return"]]
+        colors = ["#00FF88" if r > 0 else "#FF3D9A" for r in price_df["return"]]
         fig_price.add_trace(go.Bar(x=price_df["date"], y=price_df["return"],
             marker_color=colors, name="Returns", opacity=0.7), row=2, col=1)
         # Volume
@@ -549,13 +550,13 @@ with tab1:
         fig_price.update_layout(
             template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(6,13,24,0.8)",
             showlegend=False, height=480,
-            xaxis3=dict(showgrid=False, gridcolor="#1a3055"),
-            yaxis=dict(showgrid=True, gridcolor="#0f1f38", title="Price (USDT)"),
-            yaxis2=dict(showgrid=True, gridcolor="#0f1f38", title="Return"),
+            xaxis3=dict(showgrid=False, gridcolor="#24345C"),
+            yaxis=dict(showgrid=True, gridcolor="#111A33", title="Price (USDT)"),
+            yaxis2=dict(showgrid=True, gridcolor="#111A33", title="Return"),
             yaxis3=dict(showgrid=False, title="Volume"),
             margin=dict(l=60, r=10, t=10, b=10),
         )
-        fig_price.update_xaxes(showgrid=False, gridcolor="#0f1f38")
+        fig_price.update_xaxes(showgrid=False, gridcolor="#111A33")
         st.plotly_chart(fig_price, width="stretch")
 
     with col_b:
@@ -576,7 +577,7 @@ with tab1:
         sample = universe.sample(40, random_state=1)
         fig_scatter = px.scatter(sample, x="std_dev", y="mean_return",
                                   size="volume_24h", color="sharpe",
-                                  color_continuous_scale=[[0,"#ff3d9a"],[0.5,"#7c3aed"],[1,"#00d4ff"]],
+                                  color_continuous_scale=[[0,"#FF3D9A"],[0.5,"#7C3AED"],[1,"#00D4FF"]],
                                   hover_name="base",
                                   labels={"std_dev":"Daily σ","mean_return":"Mean Return","sharpe":"Sharpe"})
         fig_scatter.add_hline(y=0, line_dash="dot", line_color="rgba(255,255,255,0.2)")
@@ -601,7 +602,7 @@ with tab2:
         x_kde, y_kde = kde_estimate(universe["std_dev"].values)
         fig_vol.add_trace(go.Scatter(x=x_kde * 100, y=y_kde,
             fill="tozeroy", fillcolor="rgba(0,212,255,0.1)",
-            line=dict(color="#00d4ff", width=2), name="KDE"))
+            line=dict(color="#00D4FF", width=2), name="KDE"))
         fig_vol.add_trace(go.Histogram(x=universe["std_dev"] * 100, nbinsx=30,
             marker_color="rgba(124,58,237,0.4)", name="Histogram",
             histnorm="probability density"))
@@ -618,7 +619,7 @@ with tab2:
         x_sk, y_sk = kde_estimate(universe["skewness"].values)
         fig_skew.add_trace(go.Scatter(x=x_sk, y=y_sk,
             fill="tozeroy", fillcolor="rgba(255,61,154,0.1)",
-            line=dict(color="#ff3d9a", width=2), name="KDE"))
+            line=dict(color="#FF3D9A", width=2), name="KDE"))
         fig_skew.add_vline(x=0, line_dash="dot", line_color="rgba(255,255,255,0.3)")
         fig_skew.update_layout(title="Skewness Distribution · Fat-Tail Signature",
             template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
@@ -633,7 +634,7 @@ with tab2:
         buckets = pd.cut(universe["rank"], bins=10, labels=[f"Rank {i*15+1}-{(i+1)*15}" for i in range(10)])
         sharpe_by_bucket = universe.groupby(buckets)["sharpe"].mean().reset_index()
         fig_sh = px.bar(sharpe_by_bucket, x="rank", y="sharpe",
-                         color="sharpe", color_continuous_scale=[[0,"#ff3d9a"],[0.5,"#7c3aed"],[1,"#00ff88"]])
+                         color="sharpe", color_continuous_scale=[[0,"#FF3D9A"],[0.5,"#7C3AED"],[1,"#00FF88"]])
         fig_sh.update_layout(title="Sharpe Ratio by Market Cap Rank Bucket",
             template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(6,13,24,0.8)", height=300,
@@ -647,16 +648,16 @@ with tab2:
         fig_roll = go.Figure()
         fig_roll.add_trace(go.Scatter(x=price_df["date"][1:], y=rs["rolling_std"] * 100,
             fill="tozeroy", fillcolor="rgba(0,212,255,0.08)",
-            line=dict(color="#00d4ff", width=1.5), name="30d σ (%)"))
+            line=dict(color="#00D4FF", width=1.5), name="30d σ (%)"))
         fig_roll.add_trace(go.Scatter(x=price_df["date"][1:], y=rs["rolling_sharpe"],
-            line=dict(color="#ffd700", width=1.5, dash="dot"), name="Rolling Sharpe",
+            line=dict(color="#FFD166", width=1.5, dash="dot"), name="Rolling Sharpe",
             yaxis="y2"))
         fig_roll.update_layout(title="BTC Rolling Volatility & Sharpe",
             template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(6,13,24,0.8)", height=300,
             margin=dict(l=40, r=60, t=40, b=40),
-            yaxis=dict(title="σ (%)", color="#00d4ff"),
-            yaxis2=dict(title="Sharpe", overlaying="y", side="right", color="#ffd700"),
+            yaxis=dict(title="σ (%)", color="#00D4FF"),
+            yaxis2=dict(title="Sharpe", overlaying="y", side="right", color="#FFD166"),
             legend=dict(x=0, y=1))
         st.plotly_chart(fig_roll, width="stretch")
 
@@ -679,7 +680,7 @@ with tab3:
     col_c1, col_c2 = st.columns([3, 2])
     with col_c1:
         fig_corr = px.imshow(corr_matrix,
-            color_continuous_scale=[[0,"#ff3d9a"],[0.5,"#0a1628"],[1,"#00d4ff"]],
+            color_continuous_scale=[[0,"#FF3D9A"],[0.5,"#0C1224"],[1,"#00D4FF"]],
             zmin=-1, zmax=1, aspect="auto")
         fig_corr.update_layout(
             title="Pairwise Pearson Correlation — Top 20 Assets",
@@ -699,7 +700,7 @@ with tab3:
             "Meme / Speculative": ["DOGE", "SHIB", "PEPE", "BONK"],
             "Stablecoin Adjacent": ["XRP", "XLM", "ALGO"],
         }
-        cluster_colors = ["#00d4ff","#7c3aed","#00ff88","#ff3d9a","#ffd700"]
+        cluster_colors = ["#00D4FF","#7C3AED","#00FF88","#FF3D9A","#FFD166"]
         for (cname, members), color in zip(clusters.items(), cluster_colors):
             st.markdown(f"""
             <div style='background:rgba(0,0,0,0.3); border-left:3px solid {color};
@@ -708,7 +709,7 @@ with tab3:
                           letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.3rem;'>
                 {cname}
               </div>
-              <div style='font-family:JetBrains Mono,monospace; font-size:0.8rem; color:#e8f4ff;'>
+              <div style='font-family:JetBrains Mono,monospace; font-size:0.8rem; color:#F1F7FF;'>
                 {' · '.join(members)}
               </div>
             </div>
@@ -719,9 +720,9 @@ with tab3:
         vals = corr_matrix.values.flatten()
         vals = vals[vals != 1.0]
         fig_ch = go.Figure(go.Histogram(x=vals, nbinsx=40,
-            marker_color="rgba(0,212,255,0.5)", marker_line_color="#00d4ff",
+            marker_color="rgba(0,212,255,0.5)", marker_line_color="#00D4FF",
             marker_line_width=0.5))
-        fig_ch.add_vline(x=vals.mean(), line_dash="dot", line_color="#ffd700")
+        fig_ch.add_vline(x=vals.mean(), line_dash="dot", line_color="#FFD166")
         fig_ch.update_layout(title=f"Correlation Dist. (mean={vals.mean():.3f})",
             template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(6,13,24,0.8)", height=200,
@@ -748,9 +749,9 @@ with tab4:
         fig_dist.add_trace(go.Histogram(x=r, nbinsx=80, histnorm="probability density",
             marker_color="rgba(0,212,255,0.3)", name="BTC Returns"))
         fig_dist.add_trace(go.Scatter(x=x_range, y=normal_pdf,
-            line=dict(color="#ffd700", width=2, dash="dash"), name="Normal Fit"))
+            line=dict(color="#FFD166", width=2, dash="dash"), name="Normal Fit"))
         fig_dist.add_trace(go.Scatter(x=x_range, y=t_pdf,
-            line=dict(color="#ff3d9a", width=2), name=f"Student-t (ν={t_df_fit:.1f})"))
+            line=dict(color="#FF3D9A", width=2), name=f"Student-t (ν={t_df_fit:.1f})"))
         fig_dist.update_layout(title="BTC Return Distribution · Normal vs Student-t",
             template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(6,13,24,0.8)", height=360,
@@ -763,10 +764,10 @@ with tab4:
         (osm, osr), (slope, intercept, r_val) = stats.probplot(r, dist="norm")
         fig_qq = go.Figure()
         fig_qq.add_trace(go.Scatter(x=osm, y=osr, mode="markers",
-            marker=dict(color="#7c3aed", size=3, opacity=0.7), name="Quantiles"))
+            marker=dict(color="#7C3AED", size=3, opacity=0.7), name="Quantiles"))
         fig_qq.add_trace(go.Scatter(x=[osm.min(), osm.max()],
             y=[slope * osm.min() + intercept, slope * osm.max() + intercept],
-            line=dict(color="#ffd700", width=2, dash="dot"), name="Normal Line"))
+            line=dict(color="#FFD166", width=2, dash="dot"), name="Normal Line"))
         fig_qq.update_layout(title="Q-Q Plot · Theoretical vs Empirical Quantiles",
             template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(6,13,24,0.8)", height=360,
@@ -792,14 +793,14 @@ with tab4:
         ("Excess Kurt.", f"{kurt_excess:.4f}", "leptokurtic", kurt_excess > 1),
     ]
     for col, (name, val, note, reject) in zip(test_cols, tests):
-        color = "#ff3d9a" if reject else "#00ff88"
+        color = "#FF3D9A" if reject else "#00FF88"
         label = "REJECT H₀" if reject else "FAIL TO REJECT"
         with col:
             st.markdown(f"""
             <div class='q-card'>
               <div class='q-title'>{name}</div>
               <div class='q-value' style='font-size:1.3rem;'>{val}</div>
-              <div style='font-size:0.7rem; color:#4a6fa5; margin-top:0.3rem;'>{note}</div>
+              <div style='font-size:0.7rem; color:#6686B8; margin-top:0.3rem;'>{note}</div>
               <div style='font-size:0.65rem; color:{color}; margin-top:0.4rem; font-family:JetBrains Mono,monospace;'>{label}</div>
             </div>
             """, unsafe_allow_html=True)
@@ -814,7 +815,7 @@ with tab4:
         fig_acf.add_hline(y=ci, line_dash="dot", line_color="rgba(255,215,0,0.5)")
         fig_acf.add_hline(y=-ci, line_dash="dot", line_color="rgba(255,215,0,0.5)")
         fig_acf.add_trace(go.Bar(x=list(range(1, lags_n + 1)), y=acf_vals,
-            marker_color=["#00d4ff" if abs(v) < ci else "#ff3d9a" for v in acf_vals]))
+            marker_color=["#00D4FF" if abs(v) < ci else "#FF3D9A" for v in acf_vals]))
         fig_acf.update_layout(title="ACF — BTC Daily Returns",
             template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(6,13,24,0.8)", height=280,
@@ -828,7 +829,7 @@ with tab4:
         fig_acf2.add_hline(y=ci, line_dash="dot", line_color="rgba(255,215,0,0.5)")
         fig_acf2.add_hline(y=-ci, line_dash="dot", line_color="rgba(255,215,0,0.5)")
         fig_acf2.add_trace(go.Bar(x=list(range(1, lags_n + 1)), y=acf_sq,
-            marker_color=["#7c3aed" if abs(v) < ci else "#ff3d9a" for v in acf_sq]))
+            marker_color=["#7C3AED" if abs(v) < ci else "#FF3D9A" for v in acf_sq]))
         fig_acf2.update_layout(title="ACF — BTC Squared Returns (Volatility Clustering)",
             template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(6,13,24,0.8)", height=280,
@@ -854,12 +855,12 @@ with tab5:
 
             fig_wave = go.Figure()
             fig_wave.add_trace(go.Scatter(y=psi_real[:200], x=list(range(200)),
-                line=dict(color="#00d4ff", width=1.2), name="ψ Real", opacity=0.8))
+                line=dict(color="#00D4FF", width=1.2), name="ψ Real", opacity=0.8))
             fig_wave.add_trace(go.Scatter(y=psi_imag[:200], x=list(range(200)),
-                line=dict(color="#7c3aed", width=1.2), name="ψ Imaginary", opacity=0.8))
+                line=dict(color="#7C3AED", width=1.2), name="ψ Imaginary", opacity=0.8))
             fig_wave.add_trace(go.Scatter(y=prob_amp[:200], x=list(range(200)),
                 fill="tozeroy", fillcolor="rgba(0,255,136,0.08)",
-                line=dict(color="#00ff88", width=1.5), name="|ψ|² Probability"))
+                line=dict(color="#00FF88", width=1.5), name="|ψ|² Probability"))
             fig_wave.update_layout(title="Quantum Probability Amplitude — Return Wavefunction",
                 template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(6,13,24,0.8)", height=320,
@@ -887,9 +888,9 @@ with tab5:
 
             fig_hurst = go.Figure()
             fig_hurst.add_trace(go.Scatter(x=l_arr, y=rs_arr, mode="markers",
-                marker=dict(color="#00d4ff", size=6), name="R/S"))
+                marker=dict(color="#00D4FF", size=6), name="R/S"))
             fig_hurst.add_trace(go.Scatter(x=l_arr, y=slope * l_arr + intercept,
-                line=dict(color="#ffd700", width=2), name=f"Hurst H={slope:.3f}"))
+                line=dict(color="#FFD166", width=2), name=f"Hurst H={slope:.3f}"))
             fig_hurst.add_hline(y=np.log(0.5 * np.array([v[0] for v in valid])).mean(),
                 line_dash="dot", line_color="rgba(255,61,154,0.5)", annotation_text="H=0.5 (random walk)")
             fig_hurst.update_layout(title=f"Hurst Exponent via R/S Analysis (H={slope:.3f})",
@@ -914,7 +915,7 @@ with tab5:
             fig_ent.add_trace(go.Scatter(
                 y=entropy_series, x=list(range(len(entropy_series))),
                 fill="tozeroy", fillcolor="rgba(124,58,237,0.1)",
-                line=dict(color="#7c3aed", width=1.5), name="Shannon H"))
+                line=dict(color="#7C3AED", width=1.5), name="Shannon H"))
             fig_ent.update_layout(title="Rolling Shannon Entropy (30d) — Information Content",
                 template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(6,13,24,0.8)", height=280,
@@ -928,7 +929,7 @@ with tab5:
             returns_30 = price_df["return"].rolling(30).std().fillna(0)
             regime = np.where(returns_30 > returns_30.quantile(0.75), "High Vol", "Low Vol")
             fig_reg = go.Figure()
-            colors_reg = ["#ff3d9a" if r == "High Vol" else "#00ff88" for r in regime]
+            colors_reg = ["#FF3D9A" if r == "High Vol" else "#00FF88" for r in regime]
             fig_reg.add_trace(go.Bar(x=price_df["date"], y=returns_30,
                 marker_color=colors_reg, name="30d σ"))
             fig_reg.update_layout(title="Volatility Regime Detection (HMM-style Threshold)",
@@ -952,9 +953,9 @@ with tab5:
         template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
         scene=dict(
             bgcolor="rgba(6,13,24,0.95)",
-            xaxis=dict(title="r(t)", gridcolor="#1a3055", showbackground=False),
-            yaxis=dict(title="r(t+1)", gridcolor="#1a3055", showbackground=False),
-            zaxis=dict(title="r(t+2)", gridcolor="#1a3055", showbackground=False),
+            xaxis=dict(title="r(t)", gridcolor="#24345C", showbackground=False),
+            yaxis=dict(title="r(t+1)", gridcolor="#24345C", showbackground=False),
+            zaxis=dict(title="r(t+2)", gridcolor="#24345C", showbackground=False),
         ),
         height=500, margin=dict(l=0, r=0, t=50, b=0)
     )
@@ -968,83 +969,83 @@ with tab6:
 
     # Architecture diagram as styled HTML
     st.markdown("""
-    <div style='background:linear-gradient(135deg,#060d18,#0a1628); border:1px solid #1a3055;
+    <div style='background:linear-gradient(135deg,#070B16,#0C1224); border:1px solid #24345C;
                 border-radius:16px; padding:2rem; margin-bottom:1.5rem;'>
 
       <!-- Layer 0: Input -->
       <div style='text-align:center; margin-bottom:1.5rem;'>
-        <div style='font-family:Orbitron,monospace; font-size:0.65rem; color:#4a6fa5;
+        <div style='font-family:Orbitron,monospace; font-size:0.65rem; color:#6686B8;
                     letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.8rem;'>
           ── LAYER 0 · DATA INGESTION ──
         </div>
         <div style='display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;'>
-          <div class='arch-node'>🌐 Binance REST API<br><span style='color:#4a6fa5;font-size:0.7rem;'>Top 150 USDT pairs · 24h volume</span></div>
-          <div class='arch-node'>📦 Binance Vision CDN<br><span style='color:#4a6fa5;font-size:0.7rem;'>Monthly OHLCV ZIP archives</span></div>
-          <div class='arch-node'>🔁 CoinGecko Fallback<br><span style='color:#4a6fa5;font-size:0.7rem;'>Market cap rankings</span></div>
+          <div class='arch-node'>🌐 Binance REST API<br><span style='color:#6686B8;font-size:0.7rem;'>Top 150 USDT pairs · 24h volume</span></div>
+          <div class='arch-node'>📦 Binance Vision CDN<br><span style='color:#6686B8;font-size:0.7rem;'>Monthly OHLCV ZIP archives</span></div>
+          <div class='arch-node'>🔁 CoinGecko Fallback<br><span style='color:#6686B8;font-size:0.7rem;'>Market cap rankings</span></div>
         </div>
       </div>
 
-      <div style='text-align:center; color:#1a3055; font-size:1.5rem; margin:0.3rem 0;'>↓</div>
+      <div style='text-align:center; color:#24345C; font-size:1.5rem; margin:0.3rem 0;'>↓</div>
 
       <!-- Layer 1: ETL -->
       <div style='text-align:center; margin-bottom:1.5rem;'>
-        <div style='font-family:Orbitron,monospace; font-size:0.65rem; color:#4a6fa5;
+        <div style='font-family:Orbitron,monospace; font-size:0.65rem; color:#6686B8;
                     letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.8rem;'>
           ── LAYER 1 · ETL PIPELINE ──
         </div>
         <div style='display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;'>
-          <div class='arch-node'>🗓 Monthly Loop<br><span style='color:#4a6fa5;font-size:0.7rem;'>24 months × 150 symbols</span></div>
-          <div class='arch-node'>⏱ Timestamp Normalizer<br><span style='color:#4a6fa5;font-size:0.7rem;'>ms/μs auto-detection</span></div>
-          <div class='arch-node'>🧹 Dedup & Align<br><span style='color:#4a6fa5;font-size:0.7rem;'>Symbol-date uniqueness</span></div>
-          <div class='arch-node'>💾 Parquet Store<br><span style='color:#4a6fa5;font-size:0.7rem;'>combined_ohlcv.parquet</span></div>
+          <div class='arch-node'>🗓 Monthly Loop<br><span style='color:#6686B8;font-size:0.7rem;'>24 months × 150 symbols</span></div>
+          <div class='arch-node'>⏱ Timestamp Normalizer<br><span style='color:#6686B8;font-size:0.7rem;'>ms/μs auto-detection</span></div>
+          <div class='arch-node'>🧹 Dedup & Align<br><span style='color:#6686B8;font-size:0.7rem;'>Symbol-date uniqueness</span></div>
+          <div class='arch-node'>💾 Parquet Store<br><span style='color:#6686B8;font-size:0.7rem;'>combined_ohlcv.parquet</span></div>
         </div>
       </div>
 
-      <div style='text-align:center; color:#1a3055; font-size:1.5rem; margin:0.3rem 0;'>↓</div>
+      <div style='text-align:center; color:#24345C; font-size:1.5rem; margin:0.3rem 0;'>↓</div>
 
       <!-- Layer 2: Feature Engineering -->
       <div style='text-align:center; margin-bottom:1.5rem;'>
-        <div style='font-family:Orbitron,monospace; font-size:0.65rem; color:#4a6fa5;
+        <div style='font-family:Orbitron,monospace; font-size:0.65rem; color:#6686B8;
                     letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.8rem;'>
           ── LAYER 2 · FEATURE ENGINEERING ──
         </div>
         <div style='display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;'>
-          <div class='arch-node'>📈 Returns Engine<br><span style='color:#4a6fa5;font-size:0.7rem;'>pct_change · log returns</span></div>
-          <div class='arch-node'>📊 Descriptive Stats<br><span style='color:#4a6fa5;font-size:0.7rem;'>μ · σ · skew · IQR · mode</span></div>
-          <div class='arch-node'>🔁 Rolling Windows<br><span style='color:#4a6fa5;font-size:0.7rem;'>7 · 30 · 90 day windows</span></div>
-          <div class='arch-node'>📉 Drawdown Calculator<br><span style='color:#4a6fa5;font-size:0.7rem;'>Max DD · Recovery</span></div>
+          <div class='arch-node'>📈 Returns Engine<br><span style='color:#6686B8;font-size:0.7rem;'>pct_change · log returns</span></div>
+          <div class='arch-node'>📊 Descriptive Stats<br><span style='color:#6686B8;font-size:0.7rem;'>μ · σ · skew · IQR · mode</span></div>
+          <div class='arch-node'>🔁 Rolling Windows<br><span style='color:#6686B8;font-size:0.7rem;'>7 · 30 · 90 day windows</span></div>
+          <div class='arch-node'>📉 Drawdown Calculator<br><span style='color:#6686B8;font-size:0.7rem;'>Max DD · Recovery</span></div>
         </div>
       </div>
 
-      <div style='text-align:center; color:#1a3055; font-size:1.5rem; margin:0.3rem 0;'>↓</div>
+      <div style='text-align:center; color:#24345C; font-size:1.5rem; margin:0.3rem 0;'>↓</div>
 
       <!-- Layer 3: Statistical Analysis -->
       <div style='text-align:center; margin-bottom:1.5rem;'>
-        <div style='font-family:Orbitron,monospace; font-size:0.65rem; color:#4a6fa5;
+        <div style='font-family:Orbitron,monospace; font-size:0.65rem; color:#6686B8;
                     letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.8rem;'>
           ── LAYER 3 · STATISTICAL ANALYSIS ENGINE ──
         </div>
         <div style='display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;'>
-          <div class='arch-node' style='border-color:#7c3aed;'>🧮 Normality Tests<br><span style='color:#4a6fa5;font-size:0.7rem;'>KS · Shapiro · Jarque-Bera</span></div>
-          <div class='arch-node' style='border-color:#7c3aed;'>📡 ACF / PACF<br><span style='color:#4a6fa5;font-size:0.7rem;'>Returns & Squared Returns</span></div>
-          <div class='arch-node' style='border-color:#7c3aed;'>🌊 Correlation Matrix<br><span style='color:#4a6fa5;font-size:0.7rem;'>Pearson · 150×150</span></div>
-          <div class='arch-node' style='border-color:#7c3aed;'>📐 Distribution Fitting<br><span style='color:#4a6fa5;font-size:0.7rem;'>Normal · Student-t · KDE</span></div>
+          <div class='arch-node' style='border-color:#7C3AED;'>🧮 Normality Tests<br><span style='color:#6686B8;font-size:0.7rem;'>KS · Shapiro · Jarque-Bera</span></div>
+          <div class='arch-node' style='border-color:#7C3AED;'>📡 ACF / PACF<br><span style='color:#6686B8;font-size:0.7rem;'>Returns & Squared Returns</span></div>
+          <div class='arch-node' style='border-color:#7C3AED;'>🌊 Correlation Matrix<br><span style='color:#6686B8;font-size:0.7rem;'>Pearson · 150×150</span></div>
+          <div class='arch-node' style='border-color:#7C3AED;'>📐 Distribution Fitting<br><span style='color:#6686B8;font-size:0.7rem;'>Normal · Student-t · KDE</span></div>
         </div>
       </div>
 
-      <div style='text-align:center; color:#1a3055; font-size:1.5rem; margin:0.3rem 0;'>↓</div>
+      <div style='text-align:center; color:#24345C; font-size:1.5rem; margin:0.3rem 0;'>↓</div>
 
       <!-- Layer 4: Visualization -->
       <div style='text-align:center; margin-bottom:1.5rem;'>
-        <div style='font-family:Orbitron,monospace; font-size:0.65rem; color:#4a6fa5;
+        <div style='font-family:Orbitron,monospace; font-size:0.65rem; color:#6686B8;
                     letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.8rem;'>
           ── LAYER 4 · INTERACTIVE DASHBOARD (THIS APP) ──
         </div>
         <div style='display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;'>
-          <div class='arch-node' style='border-color:#00ff88;'>🎛 Streamlit UI<br><span style='color:#4a6fa5;font-size:0.7rem;'>Multi-page · Dark theme</span></div>
-          <div class='arch-node' style='border-color:#00ff88;'>📊 Plotly Charts<br><span style='color:#4a6fa5;font-size:0.7rem;'>Interactive · Responsive</span></div>
-          <div class='arch-node' style='border-color:#00ff88;'>⚛ Quantum Signals<br><span style='color:#4a6fa5;font-size:0.7rem;'>Entropy · Hurst · Phase</span></div>
-          <div class='arch-node' style='border-color:#00ff88;'>🗄 Cache Layer<br><span style='color:#4a6fa5;font-size:0.7rem;'>@st.cache_data TTL</span></div>
+          <div class='arch-node' style='border-color:#00FF88;'>🎛 Streamlit UI<br><span style='color:#6686B8;font-size:0.7rem;'>Multi-page · Dark theme</span></div>
+          <div class='arch-node' style='border-color:#00FF88;'>📊 Plotly Charts<br><span style='color:#6686B8;font-size:0.7rem;'>Interactive · Responsive</span></div>
+          <div class='arch-node' style='border-color:#00FF88;'>⚛ Quantum Signals<br><span style='color:#6686B8;font-size:0.7rem;'>Entropy · Hurst · Phase</span></div>
+          <div class='arch-node' style='border-color:#00FF88;'>🗄 Cache Layer<br><span style='color:#6686B8;font-size:0.7rem;'>@st.cache_data TTL</span></div>
         </div>
       </div>
 
@@ -1055,15 +1056,15 @@ with tab6:
     st.markdown('<div class="section-header">🔧 Technology Stack</div>', unsafe_allow_html=True)
     col_t1, col_t2, col_t3, col_t4 = st.columns(4)
     stacks = [
-        ("Data Layer", [("Python 3.11","core runtime"),("Pandas","dataframes"),("NumPy","numerics"),("PyArrow","parquet I/O"),("Requests","HTTP client")], "#00d4ff"),
-        ("Statistics", [("SciPy","hypothesis tests"),("Statsmodels","ACF/PACF"),("NumPy FFT","spectral"),("Custom KDE","density est."),("R/S Analysis","Hurst H")], "#7c3aed"),
-        ("Visualization", [("Plotly","interactive charts"),("Streamlit","dashboard"),("Matplotlib","static plots"),("Seaborn","heatmaps"),("Custom CSS","dark theme")], "#00ff88"),
-        ("Infrastructure", [("Google Colab","GPU notebook"),("Binance Vision","data CDN"),("Parquet","columnar store"),("Git","version control"),("Streamlit Cloud","deployment")], "#ffd700"),
+        ("Data Layer", [("Python 3.11","core runtime"),("Pandas","dataframes"),("NumPy","numerics"),("PyArrow","parquet I/O"),("Requests","HTTP client")], "#00D4FF"),
+        ("Statistics", [("SciPy","hypothesis tests"),("Statsmodels","ACF/PACF"),("NumPy FFT","spectral"),("Custom KDE","density est."),("R/S Analysis","Hurst H")], "#7C3AED"),
+        ("Visualization", [("Plotly","interactive charts"),("Streamlit","dashboard"),("Matplotlib","static plots"),("Seaborn","heatmaps"),("Custom CSS","dark theme")], "#00FF88"),
+        ("Infrastructure", [("Google Colab","GPU notebook"),("Binance Vision","data CDN"),("Parquet","columnar store"),("Git","version control"),("Streamlit Cloud","deployment")], "#FFD166"),
     ]
     for col, (title, items, color) in zip([col_t1,col_t2,col_t3,col_t4], stacks):
         with col:
             st.markdown(f"""
-            <div style='background:linear-gradient(135deg,#0f1f38,#0a1628);
+            <div style='background:linear-gradient(135deg,#111A33,#0C1224);
                         border:1px solid {color}33; border-top:2px solid {color};
                         border-radius:12px; padding:1.2rem;'>
               <div style='font-family:Orbitron,monospace; font-size:0.7rem; color:{color};
@@ -1072,9 +1073,9 @@ with tab6:
               </div>
             """ + "".join([f"""
               <div style='display:flex; justify-content:space-between; align-items:center;
-                          padding:0.3rem 0; border-bottom:1px solid #1a3055;'>
-                <span style='font-family:JetBrains Mono,monospace; font-size:0.8rem; color:#e8f4ff;'>{lib}</span>
-                <span style='font-size:0.65rem; color:#4a6fa5;'>{desc}</span>
+                          padding:0.3rem 0; border-bottom:1px solid #24345C;'>
+                <span style='font-family:JetBrains Mono,monospace; font-size:0.8rem; color:#F1F7FF;'>{lib}</span>
+                <span style='font-size:0.65rem; color:#6686B8;'>{desc}</span>
               </div>
             """ for lib, desc in items]) + "</div>", unsafe_allow_html=True)
 
@@ -1087,7 +1088,7 @@ with tab7:
     # What we DID
     st.markdown("""
     <div style='font-family:Orbitron,monospace; font-size:0.8rem; font-weight:700;
-                color:#00ff88; letter-spacing:0.1em; text-transform:uppercase;
+                color:#00FF88; letter-spacing:0.1em; text-transform:uppercase;
                 padding:0.5rem 0; margin-bottom:1rem;'>
       ✅ IMPLEMENTED · Everything in the Colab Notebook
     </div>
@@ -1111,24 +1112,24 @@ with tab7:
     ]
 
     for num, title, desc, tag in done_items:
-        tag_colors = {"Data":"#00d4ff","Ingestion":"#7c3aed","ETL":"#ff3d9a","Storage":"#ffd700",
-                      "Features":"#00ff88","Statistics":"#00d4ff","Visualization":"#7c3aed",
-                      "Analysis":"#00ff88","Time Series":"#ff3d9a","Libraries":"#4a6fa5"}
-        color = tag_colors.get(tag, "#4a6fa5")
+        tag_colors = {"Data":"#00D4FF","Ingestion":"#7C3AED","ETL":"#FF3D9A","Storage":"#FFD166",
+                      "Features":"#00FF88","Statistics":"#00D4FF","Visualization":"#7C3AED",
+                      "Analysis":"#00FF88","Time Series":"#FF3D9A","Libraries":"#6686B8"}
+        color = tag_colors.get(tag, "#6686B8")
         st.markdown(f"""
         <div class='done-item'>
-          <div style='font-family:JetBrains Mono,monospace; font-size:0.8rem; color:#00ff88;
+          <div style='font-family:JetBrains Mono,monospace; font-size:0.8rem; color:#00FF88;
                       min-width:2rem; font-weight:700;'>{num}</div>
           <div style='flex:1;'>
             <div style='display:flex; align-items:center; gap:0.5rem; margin-bottom:0.2rem;'>
-              <span style='font-weight:600; color:#e8f4ff;'>{title}</span>
+              <span style='font-weight:600; color:#F1F7FF;'>{title}</span>
               <span style='font-family:JetBrains Mono,monospace; font-size:0.65rem;
                            color:{color}; background:rgba(0,0,0,0.4);
                            padding:0.1rem 0.4rem; border-radius:4px;'>{tag}</span>
             </div>
-            <div style='font-size:0.8rem; color:#4a6fa5; line-height:1.5;'>{desc}</div>
+            <div style='font-size:0.8rem; color:#6686B8; line-height:1.5;'>{desc}</div>
           </div>
-          <div style='color:#00ff88; font-size:1rem;'>✓</div>
+          <div style='color:#00FF88; font-size:1rem;'>✓</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -1137,7 +1138,7 @@ with tab7:
     # Advanced features NOT YET DONE
     st.markdown("""
     <div style='font-family:Orbitron,monospace; font-size:0.8rem; font-weight:700;
-                color:#7c3aed; letter-spacing:0.1em; text-transform:uppercase;
+                color:#7C3AED; letter-spacing:0.1em; text-transform:uppercase;
                 padding:0.5rem 0; margin-bottom:1rem;'>
       🚀 ADVANCED FRONTIER · What Can Be Built Next
     </div>
@@ -1158,27 +1159,27 @@ with tab7:
         ("A12", "Reinforcement Learning Portfolio", "Deep Q-Network agent with state = (returns, vol, regime); action = rebalance weights across top-20 assets.", "Deep RL", "⭐⭐⭐⭐⭐"),
     ]
 
-    tag_colors_f = {"Econometrics":"#00d4ff","ML":"#7c3aed","Graph Theory":"#ff3d9a",
-                    "Dimensionality":"#ffd700","Quantum":"#00ff88","Information Theory":"#7c3aed",
-                    "Stochastic":"#ff3d9a","Causality":"#ffd700","Risk":"#ff3d9a","Deep RL":"#00d4ff"}
+    tag_colors_f = {"Econometrics":"#00D4FF","ML":"#7C3AED","Graph Theory":"#FF3D9A",
+                    "Dimensionality":"#FFD166","Quantum":"#00FF88","Information Theory":"#7C3AED",
+                    "Stochastic":"#FF3D9A","Causality":"#FFD166","Risk":"#FF3D9A","Deep RL":"#00D4FF"}
 
     for num, title, desc, tag, stars in future_items:
-        color = tag_colors_f.get(tag, "#4a6fa5")
+        color = tag_colors_f.get(tag, "#6686B8")
         st.markdown(f"""
         <div class='future-item'>
-          <div style='font-family:JetBrains Mono,monospace; font-size:0.8rem; color:#7c3aed;
+          <div style='font-family:JetBrains Mono,monospace; font-size:0.8rem; color:#7C3AED;
                       min-width:2rem; font-weight:700;'>{num}</div>
           <div style='flex:1;'>
             <div style='display:flex; align-items:center; gap:0.5rem; margin-bottom:0.2rem;'>
-              <span style='font-weight:600; color:#e8f4ff;'>{title}</span>
+              <span style='font-weight:600; color:#F1F7FF;'>{title}</span>
               <span style='font-family:JetBrains Mono,monospace; font-size:0.65rem;
                            color:{color}; background:rgba(0,0,0,0.4);
                            padding:0.1rem 0.4rem; border-radius:4px;'>{tag}</span>
               <span style='font-size:0.7rem;'>{stars}</span>
             </div>
-            <div style='font-size:0.8rem; color:#4a6fa5; line-height:1.5;'>{desc}</div>
+            <div style='font-size:0.8rem; color:#6686B8; line-height:1.5;'>{desc}</div>
           </div>
-          <div style='color:#7c3aed; font-size:1rem;'>→</div>
+          <div style='color:#7C3AED; font-size:1rem;'>→</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -1186,33 +1187,33 @@ with tab7:
 
     # Final credits
     st.markdown("""
-    <div style='background:linear-gradient(135deg,#0f1f38,#0a1628);
-                border:1px solid #1a3055; border-radius:16px; padding:1.5rem;
+    <div style='background:linear-gradient(135deg,#111A33,#0C1224);
+                border:1px solid #24345C; border-radius:16px; padding:1.5rem;
                 display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;'>
       <div>
         <div style='font-family:Orbitron,monospace; font-size:1rem; font-weight:900;
-                    background:linear-gradient(135deg,#00d4ff,#7c3aed);
+                    background:linear-gradient(135deg,#00D4FF,#7C3AED);
                     -webkit-background-clip:text; -webkit-text-fill-color:transparent;'>
           QUANTUM MARKET DYNAMICS
         </div>
-        <div style='font-size:0.75rem; color:#4a6fa5; margin-top:0.3rem;'>
+        <div style='font-size:0.75rem; color:#6686B8; margin-top:0.3rem;'>
           Statistical States of Digital Assets
         </div>
-        <div style='font-size:0.75rem; color:#4a6fa5;'>
+        <div style='font-size:0.75rem; color:#6686B8;'>
           Vijay Mahanandi · RA2411003011492 · SRMIST Kattankulathur
         </div>
-        <div style='font-size:0.75rem; color:#4a6fa5;'>
+        <div style='font-size:0.75rem; color:#6686B8;'>
           B.Tech CSE · 3rd Year · 2024–2028 Batch · CGPA 9.01
         </div>
       </div>
       <div style='text-align:right;'>
-        <div style='font-family:JetBrains Mono,monospace; font-size:0.75rem; color:#4a6fa5;'>
+        <div style='font-family:JetBrains Mono,monospace; font-size:0.75rem; color:#6686B8;'>
           Submitted for: Quantum Expo 2026
         </div>
-        <div style='font-family:JetBrains Mono,monospace; font-size:0.75rem; color:#4a6fa5;'>
+        <div style='font-family:JetBrains Mono,monospace; font-size:0.75rem; color:#6686B8;'>
           Platform: Streamlit · Plotly · SciPy
         </div>
-        <div style='font-family:JetBrains Mono,monospace; font-size:0.75rem; color:#4a6fa5;'>
+        <div style='font-family:JetBrains Mono,monospace; font-size:0.75rem; color:#6686B8;'>
           Data: Binance Vision CDN · 2024–2026
         </div>
         <div style='margin-top:0.5rem;'>
