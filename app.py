@@ -333,21 +333,26 @@ def generate_universe():
         "COMP","SNX","REN","ZRX","NMR","BAND","OXT","LRC","SKL","STORJ",
         "OCEAN","FET","ANKR","RLC","NKN","CTSI","REEF","DENT","HOT","WIN"
     ][:150]
+    # Remove duplicate symbols while preserving the original order.
+    # This guarantees that every DataFrame column has exactly the same length.
+    coins = list(dict.fromkeys(coins))
+    n_coins = len(coins)
+
     np.random.seed(42)
     df = pd.DataFrame({
         "symbol": [f"{c}USDT" for c in coins],
         "base": coins,
-        "mean_return": np.random.normal(-0.001, 0.006, 150),
-        "std_dev": np.abs(np.random.normal(0.05, 0.04, 150)),
-        "skewness": np.random.normal(1.2, 1.8, 150),
-        "kurtosis": np.random.exponential(5, 150) + 3,
-        "sharpe": np.random.normal(0.15, 0.8, 150),
-        "volume_24h": np.random.lognormal(17, 2, 150),
-        "iqr": np.abs(np.random.normal(0.04, 0.03, 150)),
-        "max_drawdown": -np.abs(np.random.normal(0.45, 0.25, 150)),
-        "beta": np.random.normal(1.0, 0.5, 150),
-        "hurst": np.random.uniform(0.35, 0.65, 150),
-        "rank": range(1, 151),
+        "mean_return": np.random.normal(-0.001, 0.006, n_coins),
+        "std_dev": np.abs(np.random.normal(0.05, 0.04, n_coins)),
+        "skewness": np.random.normal(1.2, 1.8, n_coins),
+        "kurtosis": np.random.exponential(5, n_coins) + 3,
+        "sharpe": np.random.normal(0.15, 0.8, n_coins),
+        "volume_24h": np.random.lognormal(17, 2, n_coins),
+        "iqr": np.abs(np.random.normal(0.04, 0.03, n_coins)),
+        "max_drawdown": -np.abs(np.random.normal(0.45, 0.25, n_coins)),
+        "beta": np.random.normal(1.0, 0.5, n_coins),
+        "hurst": np.random.uniform(0.35, 0.65, n_coins),
+        "rank": range(1, n_coins + 1),
     })
     # BTC anchor values
     df.loc[0, ["mean_return","std_dev","skewness","kurtosis","sharpe","hurst"]] = [
@@ -1218,3 +1223,4 @@ with tab7:
       </div>
     </div>
     """, unsafe_allow_html=True)
+
